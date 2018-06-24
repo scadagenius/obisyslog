@@ -37,7 +37,7 @@ class ObihaiSyslog:
             if hook_status != "":
                 self.process_hook_change(hook_status, port_str)
             else:
-                self.process_call_change(port_str, call_direction, caller_name, caller_number)
+                self.process_call_change(port_str, time_stamp, call_direction, caller_name, caller_number)
             self.helper.print(self.helper.log_level_info, "ObihaiSyslog:hid(): " + time_stamp + ", " + hook_status +
                               ", " + call_direction + ", " + caller_name + ", " + caller_number)
         self.helper.print(self.helper.log_level_debug, "ObihaiSyslog:hid(): exit")
@@ -81,7 +81,7 @@ class ObihaiSyslog:
 
         self.helper.print(self.helper.log_level_debug, "ObihaiSyslog:phc(): exit")
 
-    def process_call_change(self, port_str, call_direction, caller_name, caller_number):
+    def process_call_change(self, port_str, time_stamp, call_direction, caller_name, caller_number):
         self.helper.print(self.helper.log_level_debug, "ObihaiSyslog:pcc(): enter")
 
         call_status, call_direction, caller_start_time, caller_name, caller_number = self.obiscan.scan_call_status()
@@ -95,7 +95,7 @@ class ObihaiSyslog:
                                              "icon": "mdi:phone-classic"
                                          })
 
-            call_time = caller_start_time + " " + datetime.datetime.now().strftime('%m/%d')
+            call_time = time_stamp + " " + datetime.datetime.now().strftime('%m/%d')
             self.helper.add_caller_to_history(port_str, caller_number, caller_name, call_direction, call_time)
             self.helper.update_ha_phone_history()
         self.helper.print(self.helper.log_level_debug, "ObihaiSyslog:pcc(): exit")
