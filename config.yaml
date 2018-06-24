@@ -1,0 +1,39 @@
+syslog: # SYSLOG details
+    ip: 192.168.1.149 # IP address of the device you going to run this application
+    port: 514 # Port number of the above IP address
+    keep_history: 10 # store how many last call history in the file phone_history.json
+    logs:
+      level: info # debug, info(default), warning, error, critical
+      syslog_log: obi_syslog # without extension, log extension will be added automatically
+      monitor_log: obi_app # without extension, log extension will be added automatically
+
+home-assistant: # Home Assistant access details to send obihai information
+    url: http://192.168.1.77:8123 # Home Assistant URL/IP, no slash (/) at the end
+    password: home # Home Assistant password
+    show_history: 10 # show how many last call history in HA
+
+obihai: # Obihai device details
+    model: obi200 # Obihai model name, as of now it's not used
+    ip: 192.168.1.232 # IP address of obihai device to periodic poll
+    username: admin # user name of the obihai device
+    password: admin # password of the obihai device
+    poll_interval: 900 # in seconds, 0: disable
+    monitor: # Add a line for each connected phone to obihai device
+      port1: Home # Specify the phone name connected to obihai port1 otherwise delete/comment this line
+      port2: Office # Specify the phone name connected to obihai port2 otherwise delete/comment this line
+    # Don't modify following sections
+    port1: # Don't modify this section
+      inbound: "<7> [SLIC] CID to deliver: "
+      outbound: "<7> CCTL:NewCallOn Term 10[0]"
+      onoffhook: "<7> [SLIC]:Slic#1"
+    port2: # Don't modify this section
+      inboud: "<7> [SLIC] CID to deliver: "
+      outbound: "<7> CCTL:NewCallOn Term 10[1]"
+      onoffhook: "<7> [SLIC]:Slic#0"
+
+opencnam: # Web service www.opencnam.com details if you want to get the caller name from the phone number
+    base_url: "https://api.opencnam.com/v3/phone/" # This is the url for API call
+    # Once you register you will have to replace xxxx with yours account sid
+    sid: "?account_sid=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    # Once you register you will have to replace xxxx with yours auth token
+    token: "&auth_token=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&format=json&casing=title"
