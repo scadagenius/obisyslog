@@ -20,7 +20,9 @@ Syslog for Obihai phone device
        online account and then enable it. (https://www.obitalk.com/info/faq/OBi202-sec/Howto-Access-Web-from-WAN)  
     4. Some knowledge to configure obihai device to send SYSLOG to this application as per documented by Obitalk:
        http://www.obihai.com/OBiDeviceAdminGuide
-        ![Alt text](https://raw.githubusercontent.com/scadagenius/obisyslog/master/images/obihai_config.jpg)
+
+**Obihai Config**
+![Obihai Config](images/obihai_config.jpg)
         
        I have tested and verified with following settings:
             Hardware: OBi202
@@ -65,9 +67,14 @@ Syslog for Obihai phone device
             sensor.phone_status_port1(2)
             sensor.active_call_direction_port1(2)
             sensor.phone_details_port1(2)
-            
-        ![Alt text](https://raw.githubusercontent.com/scadagenius/obisyslog/master/images/ha_obihai_common.jpg)
-        ![Alt text](https://raw.githubusercontent.com/scadagenius/obisyslog/master/images/ha_obihai_details.jpg)
+
+**Obihai Common**
+
+![Obihai Common](https://raw.githubusercontent.com/scadagenius/obisyslog/master/images/ha_obihai_common.jpg)
+
+**Obihai Details**
+
+![Obihai Details](https://raw.githubusercontent.com/scadagenius/obisyslog/master/images/ha_obihai_details.jpg)
 
     Obihai section has the details of your Obihai device.
         IP:Port: IP address and port of your Obihai device to poll the device the specified interval
