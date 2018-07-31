@@ -115,4 +115,4 @@ Syslog for Obihai phone device
               Line #12 to 
                 - .:/config # Folder name where you have config file
             And then run the command (you may have to run with sudo) 
-              docker docker-compose up -d
+              docker-compose up -d
